@@ -10,7 +10,7 @@ const Layout = ({children, pageTitle}) => {
             <meta name="description" content="LDM UIN Bandung" />
          </Head>
          <Header />
-         <div>{children}</div>
+            <div>{children}</div>
          <Footer />
       </>
    )

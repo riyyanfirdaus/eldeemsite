@@ -1,20 +1,23 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import HomeActivities from '../components/HomeActivities';
+import HomeBlog from '../components/HomeBlog';
 import Layout from '../components/Layout';
 
 export default function Home() {
+
   return (
     <Layout pageTitle="Home">
 
-      <div class="hero lg:min-h-screen sm:min-h-[30vh] bg-primary mt-16">
-        <div class="hero-content flex-col sm:flex-row-reverse md:px-12">
-          <div className="hidden sm:flex drop-shadow-xl">
-            <Image src="https://source.unsplash.com/260x400?mosque" class="max-w-sm rounded-lg" width={260} height={400} />
+      <div className="hero lg:min-h-screen sm:min-h-[30vh] bg-primary mt-16">
+        <div className="hero-content flex-col sm:flex-row-reverse md:px-12">
+          <div className="hidden md:flex drop-shadow-xl">
+            <Image src="https://source.unsplash.com/260x400?mosque" className="max-w-sm rounded-lg" width={260} height={400} />
           </div>
-          <div className="text-secondary lg:mr-12 sm:text-left text-center sm:mb-0 mb-10">
-            <h1 class="lg:text-5xl text-4xl font-bold">Arungi Kebaikan, <br/>Luaskan Kebermanfaatan</h1>
-            <p class="py-6">LDM sebagai fasilitator pembentuk karakter anggota yang berdaya serta progresif dalam syi'ar Islam di internal dan eksternal kampus</p>
-            <Link href="/proker"><a class="btn btn-secondary text-primary">Lihat Lebih Lanjut</a></Link>
+          <div className="text-secondary lg:mr-12 md:text-left text-center sm:mb-6 mb-10">
+            <h1 className="lg:text-5xl text-4xl font-bold">Arungi Kebaikan, <br/>Luaskan Kebermanfaatan</h1>
+            <p className="py-6">LDM sebagai fasilitator pembentuk karakter anggota yang berdaya serta progresif dalam syi'ar Islam di internal dan eksternal kampus</p>
+            <Link href="/activities"><a className="btn btn-secondary text-primary">Kunjungi Lebih Lanjut</a></Link>
           </div>
         </div>
       </div>
@@ -51,42 +54,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="py-16">
-        <h2 className="mb-12 text-center font-extrabold text-4xl text-secondary">Kabar Terbaru</h2>
-        <div className="container mx-auto px-6 sm:flex sm:flex-wrap sm:justify-evenly gap-2">
-          <div class="card sm:w-64 md:w-80 lg:w-72 bg-base-100 shadow-lg mb-10 sm:mb-0">
-            <figure><Image src="https://source.unsplash.com/600x425?news" alt="Shoes" width={600} height={425} /></figure>
-            <div class="card-body p-6 text-slate-700">
-              <h2 class="card-title font-bold">Ini Berita Penting</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <div class="card-actions justify-center mt-6">
-                <Link href="/blog"><a class="btn btn-secondary w-full text-primary">Read More</a></Link>
-              </div>
-            </div>
-          </div>
-          <div class="card sm:w-64 md:w-80 lg:w-72 bg-base-100 shadow-lg mb-10 sm:mb-0">
-            <figure><Image src="https://source.unsplash.com/600x425?news" alt="Shoes" width={600} height={425} /></figure>
-            <div class="card-body p-6 text-slate-700">
-              <h2 class="card-title font-bold">Ini Berita Penting</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <div class="card-actions justify-center mt-6">
-                <Link href="/blog"><a class="btn btn-secondary w-full text-primary">Read More</a></Link>
-              </div>
-            </div>
-          </div>
-          <div class="card sm:w-64 md:w-80 lg:w-72 bg-base-100 shadow-lg mb-10 sm:mb-0">
-            <figure><Image src="https://source.unsplash.com/600x425?news" alt="Shoes" width={600} height={425} /></figure>
-            <div class="card-body p-6 text-slate-700">
-              <h2 class="card-title font-bold">Ini Berita Penting</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <div class="card-actions justify-center mt-6">
-                <Link href="/blog"><a class="btn btn-secondary w-full text-primary">Read More</a></Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <HomeActivities />
+      
+      <HomeBlog />      
     </Layout>
   )
 }

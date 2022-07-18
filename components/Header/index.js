@@ -20,8 +20,8 @@ const Header = () => {
                         </div>
                         <ul className="mt-4 text-center">
                            <li className="uppercase py-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/"><a>Home</a></Link></li>
-                           <li className="uppercase py-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/proker"><a>Program Kerja</a></Link></li>
-                           <li className="uppercase py-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/blog"><a>Artikel</a></Link></li>
+                           <li className="uppercase py-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/activities"><a>Kegiatan</a></Link></li>
+                           <li className="uppercase py-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/blog"><a>Kabar</a></Link></li>
                            <li className="uppercase py-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-l font-semibold"><Link href="/about"><a>Tentang</a></Link></li>
                         </ul>
                         </label>
@@ -33,8 +33,8 @@ const Header = () => {
                   <div className="navbar-center hidden sm:flex text-secondary">
                   <ul className="menu menu-horizontal p-0">
                      <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/"><a>Home</a></Link></li>
-                     <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/proker"><a>Program Kerja</a></Link></li>
-                     <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/blog"><a>Artikel</a></Link></li>
+                     <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/activities"><a>Kegiatan</a></Link></li>
+                     <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/blog"><a>Kabar</a></Link></li>
                      <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/about"><a>Tentang</a></Link></li>
                   </ul>
                   </div>
