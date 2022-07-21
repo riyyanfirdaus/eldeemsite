@@ -22,13 +22,13 @@ const Header = () => {
                            <li className="uppercase py-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/"><a>Home</a></Link></li>
                            <li className="uppercase py-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/activities"><a>Kegiatan</a></Link></li>
                            <li className="uppercase pt-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/blog"><a>Kabar</a></Link></li>
-                           <li class="collapse uppercase cursor-pointer font-semibold">
-                              <input type="checkbox" class="peer" /> 
-                              <a class="collapse-title bg-primary text-secondary peer-checked:bg-secondary peer-checked:text-primary pl-14">
+                           <li className="collapse uppercase cursor-pointer font-semibold">
+                              <input type="checkbox" className="peer" /> 
+                              <a className="collapse-title bg-primary text-secondary peer-checked:bg-secondary peer-checked:text-primary pl-14">
                                  Tentang
                                  <svg className="fill-current inline-block" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
                               </a>
-                              <ul class="collapse-content bg-primary text-secondary peer-checked:bg-secondary peer-checked:text-primary">
+                              <ul className="collapse-content bg-primary text-secondary peer-checked:bg-secondary peer-checked:text-primary">
                                  <li className="uppercase py-2 cursor-pointer hover:bg-primary hover:text-secondary hover:rounded-lg font-semibold"><Link href="/about"><a>visi, Misi, & Tujuan</a></Link></li>
                                  <li className="uppercase py-2 cursor-pointer hover:bg-primary hover:text-secondary hover:rounded-lg font-semibold"><Link href="/struktur"><a>Struktur Organisasi</a></Link></li>
                               </ul>
@@ -48,7 +48,7 @@ const Header = () => {
                      <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/"><a>Home</a></Link></li>
                      <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/activities"><a>Kegiatan</a></Link></li>
                      <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/blog"><a>Kabar</a></Link></li>
-                     <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold" tabindex="0">
+                     <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold" tabIndex="0">
                         <a>
                            Tentang
                            <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
