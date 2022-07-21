@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const Footer = () => {
     return (
         <>
@@ -8,10 +10,10 @@ const Footer = () => {
             </div> 
             <div className="text-primary">
                <span className="footer-title opacity-100">Learn More</span> 
-               <a className="link link-hover opacity-60">Kegiatan</a> 
-               <a className="link link-hover opacity-60">Kabar Terbaru</a> 
-               <a className="link link-hover opacity-60">Tentang</a> 
-               <a className="link link-hover opacity-60">Pendaftaran</a>
+               <Link href="/activities"><a className="link link-hover opacity-60">Kegiatan</a></Link> 
+               <Link href="/blog"><a className="link link-hover opacity-60">Kabar Terbaru</a></Link> 
+               <Link href="/about"><a className="link link-hover opacity-60">Tentang</a></Link> 
+               <Link href="/"><a className="link link-hover opacity-60">Pendaftaran</a></Link>
             </div> 
             <div className="text-primary">
                <span className="footer-title opacity-100">Media Sosial</span> 
