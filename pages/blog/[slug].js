@@ -1,25 +1,34 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Layout from '../../components/Layout';
+import { useEffect } from 'react';
+import { getBlocks, getDatabaseNews, getPage } from '../../lib/notion';
+import { dateFormat } from '../../lib/date';
+import { renderBlock } from '../../utils/blocks';
 
-const BlogDetail = () => {
+const BlogDetail = ({dataBlogDetail, blocks}) => {
    // const router = useRouter();
    // const { slug } = router.query;
+
+   useEffect(() => {
+      console.log(dataBlogDetail)
+      console.log(blocks)
+   }, [])
 
    return (
       <Layout pageTitle="Blog">
          <div className="hero lg:min-h-screen sm:min-h-[30vh] bg-primary mt-16">
             <div className="hero-content md:pr-12 md:pl-16 sm:flex-row flex-col-reverse">
                <div className="md:text-left text-center sm:mb-6 mb-6 sm:max-w-xl">
-                  <p className="badge badge-secondary text-primary mb-3 sm:text-lg text-md">Keumatan</p>
-                  <h1 className="lg:text-5xl text-xl font-bold text-slate-800">Tutorial Agar Bisa Sat Set Sat Set Dalam Waktu Singkat</h1>
+                  <p className="badge badge-secondary text-primary mb-3 sm:text-lg text-md">{dataBlogDetail.properties.Category.multi_select[0].name}</p>
+                  <h1 className="lg:text-5xl text-xl font-bold text-slate-800">{dataBlogDetail.properties.Title.title[0].plain_text}</h1>
                   <div className="sm:pt-10 pt-6 flex items-center justify-center sm:justify-start">
                      <div className="mr-3">
-                        <Image src="https://source.unsplash.com/50x50?face" class="rounded-full object-cover" width={50} height={50} />
+                        <Image src="https://source.unsplash.com/50x50?face" className="rounded-full object-cover" width={50} height={50} />
                      </div>
                      <div className="text-left">
-                        <p className="sm:text-lg text-md font-semibold text-slate-800">by Riyyan Firdaus</p>
-                        <p className="sm:text-lg text-md font-semibold text-slate-600">Mei 28, 2022</p>
+                        <p className="sm:text-lg text-md font-semibold text-slate-800">by {dataBlogDetail.properties.Author.people[0].name}</p>
+                        <p className="sm:text-lg text-md font-semibold text-slate-600">{dateFormat(dataBlogDetail.properties.Published_Date.date.start)}</p>
                      </div>
                   </div>
                </div>
@@ -42,19 +51,13 @@ const BlogDetail = () => {
                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#334155"><path d="M16.98 0a6.9 6.9 0 0 1 5.08 1.98A6.94 6.94 0 0 1 24 7.02v9.96c0 2.08-.68 3.87-1.98 5.13A7.14 7.14 0 0 1 16.94 24H7.06a7.06 7.06 0 0 1-5.03-1.89A6.96 6.96 0 0 1 0 16.94V7.02C0 2.8 2.8 0 7.02 0h9.96zm.05 2.23H7.06c-1.45 0-2.7.43-3.53 1.25a4.82 4.82 0 0 0-1.3 3.54v9.92c0 1.5.43 2.7 1.3 3.58a5 5 0 0 0 3.53 1.25h9.88a5 5 0 0 0 3.53-1.25 4.73 4.73 0 0 0 1.4-3.54V7.02a5 5 0 0 0-1.3-3.49 4.82 4.82 0 0 0-3.54-1.3zM12 5.76c3.39 0 6.2 2.8 6.2 6.2a6.2 6.2 0 0 1-12.4 0 6.2 6.2 0 0 1 6.2-6.2zm0 2.22a3.99 3.99 0 0 0-3.97 3.97A3.99 3.99 0 0 0 12 15.92a3.99 3.99 0 0 0 3.97-3.97A3.99 3.99 0 0 0 12 7.98zm6.44-3.77a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8z"/></svg>
                   </a>
                </div>
-               <p className="sm:mt-0 mt-6">What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-<br/><br/>
-Why do we use it?
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-<br/><br/>
-Where does it come from?
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-<br/><br/>
-The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-<br/><br/>
-Where can I get some?
-There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+               <div className="sm:mt-0 mt-6">
+                  {
+                     blocks && blocks.map(block => {
+                        return renderBlock(block)
+                     })
+                  }
+               </div>
             </div>
          </div>
       </Layout>
@@ -62,3 +65,38 @@ There are many variations of passages of Lorem Ipsum available, but the majority
 }
 
 export default BlogDetail;
+
+export const getStaticPaths = async () => {
+   const dataPage = await getDatabaseNews()
+   const slug = str => str.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
+   const paths = dataPage.map(data => {
+      return {
+         params: {
+            slug: slug(data.properties.Title.title[0].plain_text),
+         }
+      }
+   })
+
+   return {
+      paths,
+      fallback: false,
+   }
+}
+
+export const getStaticProps = async ({params}) => {
+   const remSlug = str => str.replaceAll('-', '')
+   const remSlugSpace = str => str.replaceAll('-', ' ')
+
+   const allPage = (await getDatabaseNews()).find(result => {
+      return (result.properties.Title.title[0].plain_text).toLowerCase() === remSlugSpace(params.slug)
+   })
+
+   const blocks = await getBlocks(allPage.id)
+   const dataBlogDetail = await getPage(remSlug(allPage.id))
+   return {
+      props: {
+         dataBlogDetail,
+         blocks,
+      }
+   }
+}

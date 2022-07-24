@@ -1,10 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 import HomeActivities from '../components/HomeActivities';
 import HomeBlog from '../components/HomeBlog';
 import Layout from '../components/Layout';
+import { getDatabaseAct, getDatabaseNews } from '../lib/notion';
 
-export default function Home() {
+export default function Home({dataAct, dataBlog}) {
+
+  useEffect(() => {
+    console.log(dataAct)
+  }, [])
 
   return (
     <Layout pageTitle="Home">
@@ -54,9 +60,24 @@ export default function Home() {
         </div>
       </div>
 
-      <HomeActivities />
+      <HomeActivities dataAct={dataAct} />
       
-      <HomeBlog />      
+      <HomeBlog dataBlog={dataBlog} />      
     </Layout>
   )
+}
+
+export const getServerSideProps = async () => {
+  const dataActivities = await getDatabaseAct()
+  const dataAct = dataActivities.slice(0, 4)
+  
+  const dataBlogNews = await getDatabaseNews()
+  const dataBlog = dataBlogNews.slice(0, 6)
+
+  return {
+     props: {
+      dataAct,
+      dataBlog,
+     }
+  }
 }
