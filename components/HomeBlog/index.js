@@ -1,74 +1,37 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { dateFormat } from '../../lib/date';
 
-const HomeBlog = () => {
+const HomeBlog = ({dataBlog}) => {
   const router = useRouter();
+  const slug = str => str.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '')
+
 
   return (
     <div className="pt-16 pb-10">
       <h2 className="mb-12 text-center font-extrabold text-4xl text-secondary">Eldeem News</h2>
       <div className="container mx-auto px-6 sm:flex sm:flex-wrap sm:justify-evenly gap-2">
-        <div className="card sm:w-64 md:w-80 lg:w-74 bg-base-100 shadow-lg mb-10 sm:mb-6 cursor-pointer hover:bg-slate-50" onClick={() => router.push("/blog/ketikapaaja")}>
-          <figure><Image src="https://source.unsplash.com/600x425?news" alt="Shoes" width={600} height={425} /></figure>
-          <div className="card-body p-6 text-slate-700">
-            <h2 className="card-title font-bold">Ini Berita Penting</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div className="card-actions justify-center mt-6">
-              <button className="btn btn-secondary w-full text-primary" onClick={() => router.push("/blog/ketikapaaja")}>Read More</button>
+        {
+          dataBlog && dataBlog.map(blog => (
+            <div className="card sm:w-64 md:w-80 lg:w-74 bg-base-100 shadow-lg mb-10 sm:mb-6 cursor-pointer hover:bg-slate-50" onClick={() => router.push(`/blog/${slug(blog.properties.Title.title[0].plain_text)}`)} key={blog.id}>
+              <figure>
+                {
+                  blog.properties.Image.files[0].hasOwnProperty('file') ?
+                    <Image src={blog.properties.Image.files[0].file.url} alt={blog.properties.Title.title[0].plain_text} width={600} height={325} /> : blog.properties.Image.files[0].hasOwnProperty('external') ? <Image src={blog.properties.Image.files[0].external.url} alt={blog.properties.Title.title[0].plain_text} width={600} height={325} /> : <Image src="https://source.unsplash.com/600x325?islamic" alt={blog.properties.Title.title[0].plain_text} width={600} height={325} />
+                }
+              </figure>
+              <div className="card-body p-6 text-slate-700">
+                <p className="text-slate-500">{dateFormat(blog.properties.Published_Date.date.start)}</p>
+                <h2 className="card-title font-bold">{blog.properties.Title.title[0].plain_text}</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div className="card-actions justify-center mt-6">
+                  <button className="btn btn-secondary w-full text-primary" onClick={() => router.push(`/blog/${slug(blog.properties.Title.title[0].plain_text)}`)}>Read More</button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="card sm:w-64 md:w-80 lg:w-74 bg-base-100 shadow-lg mb-10 sm:mb-6 cursor-pointer hover:bg-slate-50" onClick={() => router.push("/blog/ketikapaaja")}>
-          <figure><Image src="https://source.unsplash.com/600x425?news" alt="Shoes" width={600} height={425} /></figure>
-          <div className="card-body p-6 text-slate-700">
-            <h2 className="card-title font-bold">Ini Berita Penting</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div className="card-actions justify-center mt-6">
-              <button className="btn btn-secondary w-full text-primary" onClick={() => router.push("/blog/ketikapaaja")}>Read More</button>
-            </div>
-          </div>
-        </div>
-        <div className="card sm:w-64 md:w-80 lg:w-74 bg-base-100 shadow-lg mb-10 sm:mb-6 cursor-pointer hover:bg-slate-50" onClick={() => router.push("/blog/ketikapaaja")}>
-          <figure><Image src="https://source.unsplash.com/600x425?news" alt="Shoes" width={600} height={425} /></figure>
-          <div className="card-body p-6 text-slate-700">
-            <h2 className="card-title font-bold">Ini Berita Penting</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div className="card-actions justify-center mt-6">
-              <button className="btn btn-secondary w-full text-primary" onClick={() => router.push("/blog/ketikapaaja")}>Read More</button>
-            </div>
-          </div>
-        </div>
-        <div className="card sm:w-64 md:w-80 lg:w-74 bg-base-100 shadow-lg mb-10 sm:mb-6 cursor-pointer hover:bg-slate-50" onClick={() => router.push("/blog/ketikapaaja")}>
-          <figure><Image src="https://source.unsplash.com/600x425?news" alt="Shoes" width={600} height={425} /></figure>
-          <div className="card-body p-6 text-slate-700">
-            <h2 className="card-title font-bold">Ini Berita Penting</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div className="card-actions justify-center mt-6">
-              <button className="btn btn-secondary w-full text-primary" onClick={() => router.push("/blog/ketikapaaja")}>Read More</button>
-            </div>
-          </div>
-        </div>
-        <div className="card sm:w-64 md:w-80 lg:w-74 bg-base-100 shadow-lg mb-10 sm:mb-6 cursor-pointer hover:bg-slate-50" onClick={() => router.push("/blog/ketikapaaja")}>
-          <figure><Image src="https://source.unsplash.com/600x425?news" alt="Shoes" width={600} height={425} /></figure>
-          <div className="card-body p-6 text-slate-700">
-            <h2 className="card-title font-bold">Ini Berita Penting</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div className="card-actions justify-center mt-6">
-              <button className="btn btn-secondary w-full text-primary" onClick={() => router.push("/blog/ketikapaaja")}>Read More</button>
-            </div>
-          </div>
-        </div>
-        <div className="card sm:w-64 md:w-80 lg:w-74 bg-base-100 shadow-lg mb-10 sm:mb-6 cursor-pointer hover:bg-slate-50" onClick={() => router.push("/blog/ketikapaaja")}>
-          <figure><Image src="https://source.unsplash.com/600x425?news" alt="Shoes" width={600} height={425} /></figure>
-          <div className="card-body p-6 text-slate-700">
-            <h2 className="card-title font-bold">Ini Berita Penting</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div className="card-actions justify-center mt-6">
-              <button className="btn btn-secondary w-full text-primary" onClick={() => router.push("/blog/ketikapaaja")}>Read More</button>
-            </div>
-          </div>
-        </div>
+          ))
+        }
       </div>
       <div className="text-center md:mt-12">
       
@@ -83,3 +46,5 @@ const HomeBlog = () => {
 }
 
 export default HomeBlog;
+
+

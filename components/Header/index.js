@@ -21,8 +21,21 @@ const Header = () => {
                         <ul className="mt-4 text-center">
                            <li className="uppercase py-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/"><a>Home</a></Link></li>
                            <li className="uppercase py-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/activities"><a>Kegiatan</a></Link></li>
-                           <li className="uppercase py-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/blog"><a>Kabar</a></Link></li>
-                           <li className="uppercase py-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-l font-semibold"><Link href="/about"><a>Tentang</a></Link></li>
+                           <li className="uppercase pt-2 cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/blog"><a>Kabar</a></Link></li>
+                           <li className="collapse uppercase cursor-pointer font-semibold">
+                              <input type="checkbox" className="peer" /> 
+                              <a className="collapse-title bg-primary text-secondary peer-checked:bg-secondary peer-checked:text-primary pl-14">
+                                 Tentang
+                                 <svg className="fill-current inline-block" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                              </a>
+                              <ul className="collapse-content bg-primary text-secondary peer-checked:bg-secondary peer-checked:text-primary">
+                                 <li className="uppercase py-2 cursor-pointer hover:bg-primary hover:text-secondary hover:rounded-lg font-semibold"><Link href="/about"><a>visi, Misi, & Tujuan</a></Link></li>
+                                 <li className="uppercase py-2 cursor-pointer hover:bg-primary hover:text-secondary hover:rounded-lg font-semibold"><Link href="/struktur"><a>Struktur Organisasi</a></Link></li>
+                              </ul>
+                           </li>
+                           <li className="mt-4">
+                              <a className="btn btn-wide btn-secondary text-primary">Daftar</a>
+                           </li>
                         </ul>
                         </label>
                      </label>
@@ -35,7 +48,16 @@ const Header = () => {
                      <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/"><a>Home</a></Link></li>
                      <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/activities"><a>Kegiatan</a></Link></li>
                      <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/blog"><a>Kabar</a></Link></li>
-                     <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold"><Link href="/about"><a>Tentang</a></Link></li>
+                     <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold" tabIndex="0">
+                        <a>
+                           Tentang
+                           <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                        </a>
+                        <ul className="p-2 bg-base-100 shadow-md">
+                           <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold text-secondary"><Link href="/about"><a>Tentang Kami</a></Link></li>
+                           <li className="uppercase cursor-pointer hover:bg-secondary hover:text-primary hover:rounded-lg font-semibold text-secondary"><Link href="/struktur"><a>Struktur Organisasi</a></Link></li>
+                        </ul>
+                     </li>
                   </ul>
                   </div>
                   <div className="navbar-end hidden lg:flex">
