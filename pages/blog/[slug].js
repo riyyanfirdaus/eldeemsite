@@ -7,6 +7,11 @@ import profilePic from '../../public/profilePic.png';
 
 const BlogDetail = ({dataBlogDetail, blocks}) => {
 
+   useEffect(() => {
+      console.log(dataBlogDetail)
+      console.log(blocks)
+   }, [])
+
    return (
       <Layout pageTitle={dataBlogDetail.properties.Title.title[0].plain_text}>
          <div className="hero lg:min-h-screen sm:min-h-[30vh] bg-primary mt-16">

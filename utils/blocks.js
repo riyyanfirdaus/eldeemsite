@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 export const renderBlock = (block, typePage) => {
-
     switch (block.type) {
         case 'heading_1': 
         // For a heading
