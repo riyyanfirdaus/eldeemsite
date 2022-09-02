@@ -6,7 +6,7 @@ const Layout = ({children, pageTitle}) => {
    return (
       <>
          <Head>
-            <title>{pageTitle} - LDM UIN Bandung </title>
+            <title>{pageTitle}</title>
             <meta name="description" content="LDM UIN Bandung" />
          </Head>
          <Header />

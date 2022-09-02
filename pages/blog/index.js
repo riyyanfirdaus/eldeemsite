@@ -23,9 +23,9 @@ const Blog = ({dataBlog}) => {
                                  <Image src={blog.properties.Image.files[0]?.file.url} className="max-w-4xl rounded-lg" alt={blog.properties.Title.title[0]?.plain_text} width={600} height={325} /> : blog.properties.Image.files[0]?.hasOwnProperty('external') ? <Image src={blog.properties.Image.files[0]?.external.url} className="max-w-4xl rounded-lg" alt={blog.properties.Title.title[0]?.plain_text} width={600} height={325} /> : <Image src="https://source.unsplash.com/600x325?islamic" className="max-w-4xl rounded-lg" alt={blog.properties.Title.title[0]?.plain_text} width={600} height={325} />
                               }
                            </figure>
-                           <p className="text-slate-500">{dateFormat(blog.properties.Published_Date.date.start)}</p>
-                           <h2 className="text-xl text-slate-700 font-bold">{blog.properties.Title.title[0].plain_text}</h2>
-                           <p className="text-slate-300 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                           <p className="text-sm text-slate-500 mb-2">{dateFormat(blog.properties.Published_Date.date.start)}</p>
+                           <h2 className="text-lg text-slate-700 font-bold">{blog.properties.Title.title[0].plain_text}</h2>
+                           <button className="btn btn-secondary btn-outline w-full text-primary mt-6" onClick={() => router.push(`/blog/${slug(blog.properties.Title.title[0].plain_text)}`)}>Read More</button>
                         </div>
                      ))
                   }

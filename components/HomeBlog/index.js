@@ -22,9 +22,8 @@ const HomeBlog = ({dataBlog}) => {
                 }
               </figure>
               <div className="card-body p-6 text-slate-700">
-                <p className="text-slate-500">{dateFormat(blog.properties.Published_Date.date.start)}</p>
-                <h2 className="card-title font-bold">{blog.properties.Title.title[0].plain_text}</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p className="text-sm text-slate-500">{dateFormat(blog.properties.Published_Date.date.start)}</p>
+                <h2 className="card-title text-lg font-bold">{blog.properties.Title.title[0].plain_text}</h2>
                 <div className="card-actions justify-center mt-6">
                   <button className="btn btn-secondary w-full text-primary" onClick={() => router.push(`/blog/${slug(blog.properties.Title.title[0].plain_text)}`)}>Read More</button>
                 </div>
