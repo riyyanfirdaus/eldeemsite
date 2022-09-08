@@ -77,7 +77,7 @@ export const getStaticPaths = async () => {
  
     return {
        paths,
-       fallback: false,
+       fallback: 'blocking',
     }
  }
  
@@ -95,6 +95,7 @@ export const getStaticPaths = async () => {
        props: {
           dataActDetail,
           blocks,
-       }
+       },
+        revalidate: 10,
     }
  }
