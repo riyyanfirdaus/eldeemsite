@@ -22,7 +22,7 @@ const ActivityDetail = ({dataActDetail, blocks}) => {
                         }
                     </figure>
                     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-accent rounded-t-lg w-36 h-10 flex"><span className="text-xl m-auto text-secondary font-bold">{
-                        new Date() < new Date(dataActDetail.properties.Register_Date.date.start) ? "Open" : "Closed"
+                        new Date() < new Date(dataActDetail.properties.Register_Date.date.end) ? "Open" : "Closed"
                     }</span></div>
                 </div>
                 <div className="flex justify-center gap-14 mb-10">
@@ -43,9 +43,9 @@ const ActivityDetail = ({dataActDetail, blocks}) => {
                                 <p className="text-lg mb-6">Klik tombol di bawah ini sekarang juga!</p>
                                 {
                                    dataActDetail.properties.Link.url !== null ? 
-                                        <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.start) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`} href={dataActDetail.properties.Link.url} target="_blank">Daftar Kegiatan</a> :
+                                        <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`} href={dataActDetail.properties.Link.url} target="_blank">Daftar Kegiatan</a> :
                                         <label htmlFor="my-modal-4">
-                                            <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.start) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`}>Daftar Kegiatan</a>
+                                            <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`}>Daftar Kegiatan</a>
                                         </label>
                                 }
                                 <input type="checkbox" id="my-modal-4" className="modal-toggle" />
