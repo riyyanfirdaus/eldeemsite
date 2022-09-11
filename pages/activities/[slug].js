@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Layout from '../../components/Layout';
-import { dateFormat } from '../../lib/date';
+import { dateFormat, dateFormatDay } from '../../lib/date';
 import { getBlocks, getDatabaseAct, getPage } from '../../lib/notion';
 import { renderBlock } from '../../utils/blocks';
 
@@ -32,7 +32,7 @@ const ActivityDetail = ({dataActDetail, blocks}) => {
                     </div>
                     <div className="flex flex-col text-center gap-1">
                         <p className="text-slate-400">Tutup Pendaftaran</p>
-                        <h3 className="text-2xl text-secondary font-bold">{dateFormat(dataActDetail.properties.Register_Date.date.start)}</h3>
+                        <h3 className="text-2xl text-secondary font-bold">{`${dateFormatDay(dataActDetail.properties.Register_Date.date.start)} - ${dateFormat(dataActDetail.properties.Register_Date.date.end)}`}</h3>
                     </div>
                 </div>
                 <div className="container mx-auto">
@@ -41,7 +41,19 @@ const ActivityDetail = ({dataActDetail, blocks}) => {
                             <div className="md:w-72 bg-white shadow-lg rounded-lg sm:mb-3 text-center p-5">
                                 <h3 className="text-lg font-bold mb-4">Yuk jangan sampai lewatkan kegiatan seru dari LDM</h3>
                                 <p className="text-lg mb-6">Klik tombol di bawah ini sekarang juga!</p>
-                                <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.start) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`} href={dataActDetail.properties.Link.url} target="_blank">Daftar Kegiatan</a>
+                                {
+                                   dataActDetail.properties.Link.url !== null ? 
+                                        <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.start) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`} href={dataActDetail.properties.Link.url} target="_blank">Daftar Kegiatan</a> :
+                                        <label htmlFor="my-modal-4">
+                                            <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.start) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`}>Daftar Kegiatan</a>
+                                        </label>
+                                }
+                                <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+                                <label htmlFor="my-modal-4" className="modal cursor-pointer">
+                                    <label className="modal-box relative w-full h-full -pb-28" htmlFor="">
+                                        <iframe className="w-full h-full aspect-square" src={dataActDetail.properties.LinkModal.url}></iframe>
+                                    </label>
+                                </label>
                             </div>
                         </div>
                         <div>
