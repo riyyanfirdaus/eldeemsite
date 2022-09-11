@@ -25,14 +25,14 @@ const ActivityDetail = ({dataActDetail, blocks}) => {
                         new Date() < new Date(dataActDetail.properties.Register_Date.date.end) ? "Open" : "Closed"
                     }</span></div>
                 </div>
-                <div className="flex justify-center gap-14 mb-10">
+                <div className="flex md:flex-row flex-col justify-center gap-14 mb-10">
                     <div className="flex flex-col text-center gap-1">
                         <p className="text-slate-400">Kategori</p>
                         <h3 className="text-2xl text-secondary font-bold">{dataActDetail.properties.Category.select.name}</h3>
                     </div>
                     <div className="flex flex-col text-center gap-1">
-                        <p className="text-slate-400">Tutup Pendaftaran</p>
-                        <h3 className="text-2xl text-secondary font-bold">{`${dateFormatDay(dataActDetail.properties.Register_Date.date.start)} - ${dateFormat(dataActDetail.properties.Register_Date.date.end)}`}</h3>
+                        <p className="text-slate-400">Periode Pendaftaran</p>
+                        <h3 className="text-xl md:text-2xl text-secondary font-bold">{`${dateFormatDay(dataActDetail.properties.Register_Date.date.start)} - ${dateFormat(dataActDetail.properties.Register_Date.date.end)}`}</h3>
                     </div>
                 </div>
                 <div className="container mx-auto">
@@ -48,7 +48,7 @@ const ActivityDetail = ({dataActDetail, blocks}) => {
                                             <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`}>Daftar Kegiatan</a>
                                         </label>
                                 }
-                                <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+                                <input type="checkbox" id="my-modal-4" className="modal-toggle" disabled={new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? "true" : null} />
                                 <label htmlFor="my-modal-4" className="modal cursor-pointer">
                                     <label className="modal-box relative w-full h-full -pb-28" htmlFor="">
                                         <iframe className="w-full h-full aspect-square" src={dataActDetail.properties.LinkModal.url}></iframe>
