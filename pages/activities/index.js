@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Layout from '../../components/Layout';
 import { useRouter } from 'next/router';
 import { getDatabaseAct } from '../../lib/notion';
-import { dateFormat } from '../../lib/date';
+import { dateFormat, dateFormatDay } from '../../lib/date';
 
 const Activities = ({dataActivities}) => {
    const router = useRouter();
@@ -28,7 +28,7 @@ const Activities = ({dataActivities}) => {
                               <p className="badge badge-accent text-secondary mt-1">{activity.properties.Category.select.name}</p>
                               <div className="mt-10">
                                  <p className="text-slate-300 text-sm">Tutup Pendaftaran</p>
-                                 <h3 className="text-lg text-slate-500 font-bold">{dateFormat(activity.properties.Register_Date.date.start)}</h3>
+                                 <h3 className="text-lg md:text-sm text-slate-500 font-bold">{`${dateFormatDay(activity.properties.Register_Date.date.start)} - ${dateFormat(activity.properties.Register_Date.date.end)}`}</h3>
                               </div>
                            </div>
                         </div>
