@@ -41,7 +41,7 @@ const ActivityDetail = ({dataActDetail, blocks}) => {
                             <div className="md:w-72 bg-white shadow-lg rounded-lg sm:mb-3 text-center p-5">
                                 <h3 className="text-lg font-bold mb-4">Yuk jangan sampai lewatkan kegiatan seru dari LDM</h3>
                                 <p className="text-lg mb-6">Klik tombol di bawah ini sekarang juga!</p>
-                                <a className="btn btn-accent font-bold capitalize text-lg text-secondary" href={dataActDetail.properties.Link.url} target="_blank">Daftar Kegiatan</a>
+                                <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.start) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`} href={dataActDetail.properties.Link.url} target="_blank">Daftar Kegiatan</a>
                             </div>
                         </div>
                         <div>
