@@ -48,7 +48,7 @@ const ActivityDetail = ({dataActDetail, blocks}) => {
                                             <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`}>Daftar Kegiatan</a>
                                         </label>
                                 }
-                                <input type="checkbox" id="my-modal-4" className="modal-toggle" disabled={new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? "true" : null} />
+                                <input type="checkbox" id="my-modal-4" className="modal-toggle" disabled={new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? true : null} />
                                 <label htmlFor="my-modal-4" className="modal cursor-pointer">
                                     <label className="modal-box relative w-full h-full -pb-28" htmlFor="">
                                         <iframe className="w-full h-full aspect-square" src={dataActDetail.properties.LinkModal.url}></iframe>
