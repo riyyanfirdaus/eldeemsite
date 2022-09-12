@@ -26,7 +26,7 @@ const HomeActivities = ({dataAct}) => {
                   <p className="badge badge-primary text-secondary">{act.properties.Category.select.name}</p>
                   <div className="mt-6">
                     <p className="text-primary text-sm">Periode Pendaftaran</p>
-                    <h3 className="text-lg md:text-sm text-primary font-bold">{`${dateFormatDay(act.properties.Register_Date.date.start)} - ${dateFormat(act.properties.Register_Date.date.end)}`}</h3>
+                    <h3 className="text-base md:text-sm text-primary font-bold">{`${dateFormatDay(act.properties.Register_Date.date.start)} - ${dateFormat(act.properties.Register_Date.date.end)}`}</h3>
                     <Link href={`/activities/${slug(act.properties.Title.title[0].plain_text)}`}><a className="flex btn btn-outline btn-primary btn-sm  text-primary w-44 mt-1 items-center"><span className="mr-2">Detail Kegiatan</span> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a></Link>
                   </div>
                 </div>
