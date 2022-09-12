@@ -27,7 +27,11 @@ const Activities = ({dataActivities}) => {
                               <h2 className="text-xl text-slate-700 font-bold">{activity.properties.Title.title[0].plain_text}</h2>
                               <p className="badge badge-accent text-secondary mt-1">{activity.properties.Category.select.name}</p>
                               <div className="mt-10">
+<<<<<<< HEAD
                                  <p className="text-slate-300 text-sm">Tutup Pendaftaran</p>
+=======
+                                 <p className="text-slate-300 text-sm">Periode Pendaftaran</p>
+>>>>>>> 505763c (perubahan date format)
                                  <h3 className="text-lg md:text-sm text-slate-500 font-bold">{`${dateFormatDay(activity.properties.Register_Date.date.start)} - ${dateFormat(activity.properties.Register_Date.date.end)}`}</h3>
                               </div>
                            </div>
