@@ -7,7 +7,7 @@ const Footer = () => {
          <footer className="footer sm:p-10 px-6 py-10 bg-secondary">
             <div className="text-primary">
                <Image src="https://res.cloudinary.com/devrbr7ot/image/upload/v1662131180/Eldeem/ldm_leywgx.png" width={50} height={40} />
-               <p className="mt-2">Memfasilitasi dan membina mahasiswa UIN Bandung<br/> dalam mengembangkan keterampilan dalam berdakwah,<br/> baik secara langsung maupun lewat media sosial,<br/> dan juga mengupgrade wawasan Islamiyah</p>
+               <p className="mt-2">Memfasilitasi dan membina mahasiswa UIN Bandung<br/> dalam mengembangkan keterampilan berdakwah,<br/> baik secara langsung maupun lewat media sosial,<br/> dan juga mengupgrade wawasan Islamiyah</p>
             </div> 
             <div className="text-primary">
                <span className="footer-title opacity-100">Learn More</span> 
