@@ -28,7 +28,7 @@ const Activities = ({dataActivities}) => {
                               <p className="badge badge-accent text-secondary mt-1">{activity.properties.Category.select.name}</p>
                               <div className="mt-10">
                                  <p className="text-slate-300 text-sm">Periode Pendaftaran</p>
-                                 <h3 className="text-lg md:text-sm text-slate-500 font-bold">{`${dateFormatDay(activity.properties.Register_Date.date.start)} - ${dateFormat(activity.properties.Register_Date.date.end)}`}</h3>
+                                 <h3 className="text-base md:text-sm text-slate-500 font-bold">{`${dateFormatDay(activity.properties.Register_Date.date.start)} - ${dateFormat(activity.properties.Register_Date.date.end)}`}</h3>
                               </div>
                            </div>
                         </div>
