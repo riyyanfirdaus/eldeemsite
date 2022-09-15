@@ -5,7 +5,7 @@ import PSDI from '../../public/psdi.png';
 import Syiar from '../../public/syiar.png';
 import Media from '../../public/media.png';
 import PPM from '../../public/ppm.png';
-import Ekraf from '../../public/Ekraf.png';
+import Ekraf from '../../public/ekraf.png';
 
 const HomeBidang = () => {
     return (
