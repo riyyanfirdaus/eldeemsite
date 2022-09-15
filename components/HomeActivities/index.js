@@ -9,11 +9,11 @@ const HomeActivities = ({dataAct}) => {
     <div className="pt-16 pb-10 bg-secondary">
       <h2 className="mb-12 text-center font-extrabold text-4xl text-primary">Eldeem Activities</h2>
       <div className="container mx-auto md:px-6">
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-y-6 ml-4 mr-2">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-y-6 md:gap-x-12 content-center justify-items-center mb-4">
           {
             dataAct && dataAct.map(act => (    
-              <div className="flex" key={act.id}>
-                <div className="mr-3">
+              <div className="flex w-10/12 md:w-11/12" key={act.id}>
+                <div className="mr-4">
                   <figure>
                     {
                         act.properties.Image.files[0]?.hasOwnProperty('file') ?
@@ -21,7 +21,7 @@ const HomeActivities = ({dataAct}) => {
                     }
                   </figure>
                 </div>
-                <div>
+                <div className="w-64">
                   <h3 className="font-bold text-primary text-lg">{act.properties.Title.title[0].plain_text}</h3>
                   <p className="badge badge-primary text-secondary">{act.properties.Category.select.name}</p>
                   <div className="mt-6">

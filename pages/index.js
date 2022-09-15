@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import HomeActivities from '../components/HomeActivities';
 import HomeBlog from '../components/HomeBlog';
+import HomeBidang from '../components/HomeBidang';
 import Layout from '../components/Layout';
 import { getDatabaseAct, getDatabaseNews } from '../lib/notion';
 
@@ -57,7 +58,9 @@ export default function Home({dataAct, dataBlog}) {
 
       <HomeActivities dataAct={dataAct} />
       
-      <HomeBlog dataBlog={dataBlog} />      
+      <HomeBlog dataBlog={dataBlog} />   
+
+      <HomeBidang />   
     </Layout>
   )
 }
