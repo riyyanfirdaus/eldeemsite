@@ -12,15 +12,15 @@ const BlogDetail = ({dataBlogDetail, blocks}) => {
          <div className="hero lg:min-h-screen sm:min-h-[30vh] bg-primary mt-16">
             <div className="hero-content md:pr-12 md:pl-16 sm:flex-row flex-col-reverse">
                <div className="md:text-left md:mr-8 text-center sm:mb-6 mb-6 sm:max-w-xl">
-                  <p className="badge badge-secondary text-primary mb-3 sm:text-lg text-md">{dataBlogDetail.properties.Category.multi_select[0].name}</p>
+                  <p className="badge badge-secondary text-primary mb-3 sm:text-lg text-base">{dataBlogDetail.properties.Category.select.name}</p>
                   <h1 className="lg:text-3xl text-xl font-bold text-slate-800">{dataBlogDetail.properties.Title.title[0].plain_text}</h1>
                   <div className="sm:pt-10 pt-6 flex items-center justify-center sm:justify-start">
                      <div className="mr-3">
-                        <Image src={dataBlogDetail.properties.Author.people[0].avatar_url || profilePic} className="rounded-full object-cover" width={50} height={50} />
+                        <Image src={dataBlogDetail.properties.Author.people[0].avatar_url || profilePic} className="rounded-full object-cover" width={42} height={42} />
                      </div>
                      <div className="text-left">
-                        <p className="sm:text-lg text-md font-semibold text-slate-800">by {dataBlogDetail.properties.Author.people[0].name}</p>
-                        <p className="sm:text-lg text-md font-semibold text-slate-600">{dateFormat(dataBlogDetail.properties.Published_Date.date.start)}</p>
+                        <p className="sm:text-base text-sm font-semibold text-slate-800">by {dataBlogDetail.properties.Author.people[0].name}</p>
+                        <p className="sm:text-base text-sm font-semibold text-slate-600">{dateFormat(dataBlogDetail.properties.Published_Date.date.start)}</p>
                      </div>
                   </div>
                </div>
