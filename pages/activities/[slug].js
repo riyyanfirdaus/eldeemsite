@@ -56,7 +56,7 @@ const ActivityDetail = ({dataActDetail, blocks}) => {
                                 </label>
                             </div>
                         </div>
-                        <div>
+                        <div className="md:mr-12 md:mt-0 mt-4">
                             <h3 className="text-lg font-bold mb-3">Deskripsi Kegiatan</h3>
                             <div className="sm:mt-0 mt-6 text-sm">
                                 {
