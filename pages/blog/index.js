@@ -24,6 +24,7 @@ const Blog = ({dataBlog}) => {
                               }
                            </figure>
                            <p className="text-sm text-slate-500 mb-2">{dateFormat(blog.properties.Published_Date.date.start)}</p>
+                           <p className="badge badge-secondary text-primary text-sm mb-2">{blog.properties.Category.select.name}</p>
                            <h2 className="text-lg text-slate-700 font-bold">{blog.properties.Title.title[0].plain_text}</h2>
                            <button className="btn btn-secondary btn-outline w-full text-primary mt-6" onClick={() => router.push(`/blog/${slug(blog.properties.Title.title[0].plain_text)}`)}>Read More</button>
                         </div>
