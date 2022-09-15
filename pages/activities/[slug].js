@@ -41,17 +41,13 @@ const ActivityDetail = ({dataActDetail, blocks}) => {
                             <div className="md:w-72 bg-white shadow-lg rounded-lg sm:mb-3 text-center p-5">
                                 <h3 className="text-lg font-bold mb-4">Yuk jangan sampai lewatkan kegiatan seru dari LDM</h3>
                                 <p className="text-lg mb-6">Klik tombol di bawah ini sekarang juga!</p>
-                                {
-                                   dataActDetail.properties.Link.url !== null ? 
-                                        <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`} href={dataActDetail.properties.Link.url} target="_blank">Daftar Kegiatan</a> :
-                                        <label htmlFor="my-modal-4">
-                                            <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`}>Daftar Kegiatan</a>
-                                        </label>
-                                }
+                                <label htmlFor="my-modal-4">
+                                    <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`}>Daftar Kegiatan</a>
+                                </label>
                                 <input type="checkbox" id="my-modal-4" className="modal-toggle" disabled={new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? true : null} />
                                 <label htmlFor="my-modal-4" className="modal cursor-pointer">
                                     <label className="modal-box relative w-full h-full -pb-28" htmlFor="">
-                                        <iframe className="w-full h-full aspect-square" src={dataActDetail.properties.LinkModal.url}></iframe>
+                                        <iframe className="w-full h-full aspect-square" src={dataActDetail.properties.Link.url}></iframe>
                                     </label>
                                 </label>
                             </div>
