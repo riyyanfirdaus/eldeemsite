@@ -9,7 +9,7 @@ const HomeActivities = ({dataAct}) => {
     <div className="pt-16 pb-10 bg-secondary">
       <h2 className="mb-12 text-center font-extrabold text-4xl text-primary">Eldeem Activities</h2>
       <div className="container mx-auto md:px-6">
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-y-6 md:gap-x-12 content-center justify-items-center mb-4">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-y-6 md:gap-x-12 justify-items-center mb-4">
           {
             dataAct && dataAct.map(act => (    
               <div className="flex w-10/12 md:w-11/12" key={act.id}>
