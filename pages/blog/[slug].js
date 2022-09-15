@@ -81,11 +81,12 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({params}) => {
+   const slug = str => str.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
    const remSlug = str => str.replaceAll('-', '')
    const remSlugSpace = str => str.replaceAll('-', ' ')
 
    const allPage = (await getDatabaseNews()).find(result => {
-      return (result.properties.Title.title[0].plain_text).toLowerCase() === remSlugSpace(params.slug)
+      return remSlugSpace(slug(result.properties.Title.title[0].plain_text)) === remSlugSpace(params.slug)
    })
 
    const blocks = await getBlocks(allPage.id)
