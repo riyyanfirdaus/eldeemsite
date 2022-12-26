@@ -2,11 +2,28 @@ import Image from 'next/image';
 import Layout from '../../components/Layout';
 import { useRouter } from 'next/router';
 import { getDatabaseAct } from '../../lib/notion';
-import { dateFormat, dateFormatDay } from '../../lib/date';
+import { dateFormat, dateFormatDay, dateFormatOnlyDay, dateFormatOnlyMonth } from '../../lib/date';
 
 const Activities = ({dataActivities}) => {
    const router = useRouter();
    const slug = str => str.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
+
+   const titleDate = (type) => {
+      const title = (type == "kegiatan" || type == "kajian") ? "Pelaksanaan Kegiatan" : (type == "donasi") ? "Periode Donasi" : "Periode Pendaftaran";
+      return title;
+   }
+
+   const newDate = (start, end) => {
+      if(end == null) {
+         return dateFormat(start);
+      } else {
+         if(dateFormatOnlyMonth(start) === dateFormatOnlyMonth(end)) {
+            return dateFormatOnlyDay(start) + " - " + dateFormat(end)
+         } else {
+            return dateFormatDay(start) + " - " + dateFormat(end)
+         }
+      }  
+   }
 
    return (
       <Layout pageTitle="Kegiatan">
@@ -27,8 +44,8 @@ const Activities = ({dataActivities}) => {
                               <h2 className="text-xl text-slate-700 font-bold">{activity.properties.Title.title[0].plain_text}</h2>
                               <p className="badge badge-accent text-secondary mt-1">{activity.properties.Category.select.name}</p>
                               <div className="mt-10">
-                                 <p className="text-slate-300 text-sm">Periode Pendaftaran</p>
-                                 <h3 className="text-base md:text-sm text-slate-500 font-bold">{`${dateFormatDay(activity.properties.Register_Date.date.start)} - ${dateFormat(activity.properties.Register_Date.date.end)}`}</h3>
+                                 <p className="text-slate-300 text-sm">{titleDate(activity.properties.Type.select.name)}</p>
+                                 <h3 className="text-base md:text-sm text-slate-500 font-bold">{`${newDate(activity.properties.Register_Date.date.start, activity.properties.Register_Date.date.end)}`}</h3>
                               </div>
                            </div>
                         </div>

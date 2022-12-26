@@ -1,10 +1,43 @@
 import Image from 'next/image';
 import Layout from '../../components/Layout';
-import { dateFormat, dateFormatDay } from '../../lib/date';
+import { dateFormat, dateFormatDay, dateFormatOnlyDay, dateFormatOnlyMonth } from '../../lib/date';
 import { getBlocks, getDatabaseAct, getPage } from '../../lib/notion';
 import { renderBlock } from '../../utils/blocks';
 
 const ActivityDetail = ({dataActDetail, blocks}) => {
+
+    const titleDate = (type) => {
+        const title = (type == "kegiatan" || type == "kajian") ? "Pelaksanaan Kegiatan" : (type == "donasi") ? "Periode Donasi" : "Periode Pendaftaran";
+        return title;
+     }
+  
+     const newDate = (start, end) => {
+        if(end == null) {
+           return dateFormat(start);
+        } else {
+           if(dateFormatOnlyMonth(start) === dateFormatOnlyMonth(end)) {
+              return dateFormatOnlyDay(start) + " - " + dateFormat(end)
+           } else {
+              return dateFormatDay(start) + " - " + dateFormat(end)
+           }
+        }  
+     }
+
+     const optionsDate = (start, end) => {
+        if(end == null) {
+            return (new Date() == new Date(start)) ? "Open" : "Closed";
+        } else {
+            return (new Date() < new Date(end)) ? "Open" : "Closed";
+        }
+     }
+     
+     const optionsBtn = (start, end) => {
+        if(end == null) {
+            return (new Date() == new Date(start)) ? "btn-accent text-secondary" : "btn-disabled text-gray-300";
+        } else {
+            return (new Date() > new Date(end)) ? "btn-disabled text-gray-300" : "btn-accent text-secondary";
+        }
+     }
 
     return (
         <Layout pageTitle={dataActDetail.properties.Title.title[0].plain_text}>
@@ -21,9 +54,7 @@ const ActivityDetail = ({dataActDetail, blocks}) => {
                             <Image src={dataActDetail.properties.Image.files[0]?.file.url} className="max-w-4xl rounded-lg object-cover object-center" alt={dataActDetail.properties.Title.title[0]?.plain_text} width={1080} height={1350} /> : dataActDetail.properties.Image.files[0]?.hasOwnProperty('external') ? <Image src={dataActDetail.properties.Image.files[0]?.external.url} className="max-w-4xl rounded-lg object-cover object-center" alt={dataActDetail.properties.Title.title[0]?.plain_text} width={1080} height={1350} /> : <Image src="https://source.unsplash.com/1080x1350?islamic" className="max-w-4xl rounded-lg object-cover object-center" alt={dataActDetail.properties.Title.title[0]?.plain_text} width={1080} height={1350} />
                         }
                     </figure>
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-accent rounded-t-lg w-36 h-10 flex"><span className="text-xl m-auto text-secondary font-bold">{
-                        new Date() < new Date(dataActDetail.properties.Register_Date.date.end) ? "Open" : "Closed"
-                    }</span></div>
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-accent rounded-t-lg w-36 h-10 flex"><span className="text-xl m-auto text-secondary font-bold">{`${optionsDate(dataActDetail.properties.Register_Date.date.start, dataActDetail.properties.Register_Date.date.end)}`}</span></div>
                 </div>
                 <div className="flex md:flex-row flex-col justify-center gap-14 mb-10">
                     <div className="flex flex-col text-center gap-1">
@@ -31,8 +62,8 @@ const ActivityDetail = ({dataActDetail, blocks}) => {
                         <h3 className="text-2xl text-secondary font-bold">{dataActDetail.properties.Category.select.name}</h3>
                     </div>
                     <div className="flex flex-col text-center gap-1">
-                        <p className="text-slate-400">Periode Pendaftaran</p>
-                        <h3 className="text-xl md:text-2xl text-secondary font-bold">{`${dateFormatDay(dataActDetail.properties.Register_Date.date.start)} - ${dateFormat(dataActDetail.properties.Register_Date.date.end)}`}</h3>
+                        <p className="text-slate-400">{`${titleDate(dataActDetail.properties.Type.select.name)}`}</p>
+                        <h3 className="text-xl md:text-2xl text-secondary font-bold">{`${newDate(dataActDetail.properties.Register_Date.date.start, dataActDetail.properties.Register_Date.date.end)}`}</h3>
                     </div>
                 </div>
                 <div className="container mx-auto">
@@ -40,16 +71,22 @@ const ActivityDetail = ({dataActDetail, blocks}) => {
                         <div className="mr-12 md:mb-0 mb-6">
                             <div className="md:w-72 bg-white shadow-lg rounded-lg sm:mb-3 text-center p-5">
                                 <h3 className="text-lg font-bold mb-4">Yuk jangan sampai lewatkan kegiatan seru dari LDM</h3>
-                                <p className="text-lg mb-6">Klik tombol di bawah ini sekarang juga!</p>
-                                <label htmlFor="my-modal-4">
-                                    <a className={`btn ${new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? "btn-disabled text-gray-300" : "btn-accent text-secondary"} font-bold capitalize text-lg`}>Daftar Kegiatan</a>
-                                </label>
-                                <input type="checkbox" id="my-modal-4" className="modal-toggle" disabled={new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? true : null} />
-                                <label htmlFor="my-modal-4" className="modal cursor-pointer">
-                                    <label className="modal-box relative w-full h-full -pb-28" htmlFor="">
-                                        <iframe className="w-full h-full aspect-square" src={dataActDetail.properties.Link.url}></iframe>
-                                    </label>
-                                </label>
+                                {
+                                    dataActDetail.properties.Type.select.name == "event" && 
+                                        <div>
+                                            <p className="text-lg mb-6">Klik tombol di bawah ini sekarang juga!</p>
+                                            <label htmlFor="my-modal-4">
+                                                <a className={`btn ${optionsBtn(dataActDetail.properties.Register_Date.date.start, dataActDetail.properties.Register_Date.date.end)} font-bold capitalize text-lg`}>Daftar Kegiatan</a>
+                                            </label>
+                                            <input type="checkbox" id="my-modal-4" className="modal-toggle" disabled={new Date() > new Date(dataActDetail.properties.Register_Date.date.end) ? true : null} />
+                                            <label htmlFor="my-modal-4" className="modal cursor-pointer">
+                                                <label className="modal-box relative w-full h-full -pb-28" htmlFor="">
+                                                    <iframe className="w-full h-full aspect-square" src={dataActDetail.properties.Link.url}></iframe>
+                                                </label>
+                                            </label>
+                                        </div>
+                                }
+                                
                             </div>
                         </div>
                         <div className="md:mr-12 md:mt-0 mt-4">

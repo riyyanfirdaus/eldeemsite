@@ -61,7 +61,8 @@ const Header = () => {
                   </ul>
                   </div>
                   <div className="navbar-end hidden lg:flex">
-                  <a className="btn btn-secondary text-primary">Daftar</a>
+                     
+                     <a className="btn btn-secondary text-primary">Daftar</a>
                   </div>
                </div>
             </div>
