@@ -12,7 +12,7 @@ export const renderBlock = (block, typePage) => {
                 <div className="mt-2 mb-2"><Image src={ block.image.external.url } width="100%" height="50%" layout="responsive" objectFit="contain" priority /></div>
         case 'bulleted_list_item': 
             // For an unordered list
-            return <ul><li className="list-disc mt-6 mb-6">{ block.bulleted_list_item.text[0].plain_text } </li></ul >
+            return <ul><li className="list-disc mt-6 mb-6">{ block.bulleted_list_item.text[0]?.plain_text } </li></ul >
         case 'paragraph': 
             // For a paragraph
             return (typePage !== 'act') ?
